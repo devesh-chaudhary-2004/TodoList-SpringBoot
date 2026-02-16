@@ -20,27 +20,27 @@ public class TodoController {
 
     @PostMapping("/{userId}")
     public TodoModel add(@PathVariable String userId, @RequestBody TodoRequestDto req){
-        TodoModel todo = new Todo(userId, req.title, req.description, false);
+        TodoModel todo = new TodoModel(userId, req.title, req.description, false);
         return service.add(todo);
     }
 
     @GetMapping("/{userId}")
-    public List<Todo> all(@PathVariable String userId){
+    public List<TodoModel> all(@PathVariable String userId){
         return service.getAll(userId);
     }
 
     @GetMapping("/completed/{userId}")
-    public List<Todo> completed(@PathVariable String userId){
+    public List<TodoModel> completed(@PathVariable String userId){
         return service.getCompleted(userId);
     }
 
     @GetMapping("/pending/{userId}")
-    public List<Todo> pending(@PathVariable String userId){
+    public List<TodoModel> pending(@PathVariable String userId){
         return service.getPending(userId);
     }
 
     @PutMapping("/complete/{id}")
-    public Todo mark(@PathVariable String id){
+    public TodoModel mark(@PathVariable String id){
         return service.markComplete(id);
     }
 }
